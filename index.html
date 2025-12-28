@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>PAINEL KEY</title>
+
+<style>
+body{
+  margin:0;
+  font-family:sans-serif;
+  background:#0f0f0f;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  padding-top:40px;
+}
+
+.box{
+  width:340px;
+  padding:22px;
+  border-radius:18px;
+  background:#111;
+  border:2px solid #ffd400;
+  box-shadow:0 0 25px #ffd40066;
+}
+
+h1{
+  margin:0 0 22px;
+  text-align:center;
+  font-size:22px;
+}
+h1 span{ color:#ffd400; }
+
+input{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+  font-size:15px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:14px;
+  border:none;
+  border-radius:12px;
+  background:#ffd400;
+  font-size:16px;
+  font-weight:bold;
+}
+
+#error{
+  margin-top:10px;
+  text-align:center;
+  color:#ff5555;
+}
+
+/* panel */
+.row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:16px 0;
+}
+
+.switch{
+  position:relative;
+  width:48px;
+  height:26px;
+}
+.switch input{ display:none; }
+
+.slider{
+  position:absolute;
+  inset:0;
+  background:#ccc;
+  border-radius:20px;
+}
+.slider:before{
+  content:"";
+  position:absolute;
+  width:22px;
+  height:22px;
+  left:2px;
+  top:2px;
+  background:#fff;
+  border-radius:50%;
+  transition:.2s;
+}
+.switch input:checked + .slider{
+  background:#ffd400;
+  box-shadow:0 0 10px #ffd400;
+}
+.switch input:checked + .slider:before{
+  transform:translateX(22px);
+}
+</style>
+</head>
+
+<body>
+
+<!-- หน้าใส่คีย์ -->
+<div class="box" id="keyPage">
+  <h1><span>PAINEL</span> KEY</h1>
+  <input type="text" id="keyInput" placeholder="ใส่ KEY">
+  <button onclick="checkKey()">ยืนยัน</button>
+  <div id="error"></div>
+</div>
+
+<!-- หน้า Panel -->
+<div class="box" id="panelPage" style="display:none;">
+  <h1><span>PAINEL</span> KEY</h1>
+
+  <div class="row">
+    <span>ยิงตัวโดนหัว</span>
+    <label class="switch">
+      <input type="checkbox" onclick="activate()">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="row">
+    <span>ยิงอกดาเมจหัว</span>
+    <label class="switch">
+      <input type="checkbox" onclick="activate()">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="row">
+    <span>ขยายดาเมจ 200%</span>
+    <label class="switch">
+      <input type="checkbox" onclick="activate()">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="row">
+    <span>กันแบน / กันรายงาน</span>
+    <label class="switch">
+      <input type="checkbox" onclick="activate()">
+      <span class="slider"></span>
+    </label>
+  </div>
+</div>
+
+<script>
+const KEY = "CHISMAS2025";
+
+function checkKey(){
+  const input = document.getElementById("keyInput").value;
+  if(input === KEY){
+    document.getElementById("keyPage").style.display = "none";
+    document.getElementById("panelPage").style.display = "block";
+  }else{
+    document.getElementById("error").innerText = "KEY ไม่ถูกต้อง ❌";
+  }
+}
+
+function activate(){
+  alert("Activar✅");
+}
+</script>
+
+</body>
+  </html>
